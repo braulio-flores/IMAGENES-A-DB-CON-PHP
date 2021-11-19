@@ -11,28 +11,18 @@
 		$resultado = $conexion->query($query);
 	?>
 	<a href="index.php">Subir nueva Imagen</a>
-	<table>
-		<tr>
-			<td colspan="2">IMAGENES DE LA BD</td>
-		</tr>
-		<tr>
-
-			<td>Nombre</td>
-			<td>Imagen</td>
-		</tr>
+	
+		<ul class="photosGrid">
 			<?php
 			while ($row = $resultado->fetch_assoc()) {
 				?>
-				<tr>
-				<td><?php echo $row['Nombre']; ?></td>
-				<td><img src="data:image/jpg;base64, <?php echo base64_encode($row['Imagen']) ?>"/></td>
-				</tr>
+				<li class="movieCard">
+					<img width="325px" height="216px" src="data:image/jpg;base64, <?php echo base64_encode($row['Imagen']) ?>"/>
+					<div><?php echo $row['Nombre']; ?></div>
+				</li>
 			<?php
 			}
 			?>
-	</table>
-
-	
-		
+		</ul>
 	</body>
 </html>
